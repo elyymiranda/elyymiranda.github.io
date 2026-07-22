@@ -20,7 +20,7 @@
 html { background: var(--bg); scroll-behavior: smooth; }
 body {
   margin: 0 auto;
-  max-width: 46rem;
+  max-width: 62rem;
   padding: 0 1.25rem 3rem;
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.65;
@@ -81,7 +81,7 @@ footer {
 
 /* Hero da home */
 .hero { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; margin-top: 0.5rem; }
-.hero > div:first-child { flex: 1 1 22rem; }
+.hero > div:first-child { flex: 1 1 22rem; max-width: 40rem; }
 .hero-eyebrow {
   font-size: 0.78rem;
   letter-spacing: 0.14em;
@@ -141,7 +141,7 @@ footer {
 .side-list { margin: 0; padding: 0; list-style: none; font-size: 0.9rem; }
 .side-list li { margin-bottom: 0.65rem; }
 .side-list li:last-child { margin-bottom: 0; }
-.pub-sidebar { flex: 0 1 13rem; display: flex; flex-direction: column; gap: 0.9rem; }
+.pub-sidebar { flex: 0 1 15rem; display: flex; flex-direction: column; gap: 0.9rem; }
 .pub-sidebar .metrics-row { flex-direction: column; margin: 0; }
 .pub-sidebar .tag { white-space: normal; }
 a.tag { text-decoration: none; }
@@ -164,6 +164,9 @@ a.tag:hover { color: var(--accent); border-color: var(--accent); }
 @media (max-width: 40rem) {
   .cv-item { grid-template-columns: 1fr; }
 }
+
+/* Prosa longa (posts) mantém largura de leitura */
+article { max-width: 46rem; }
 
 /* Listas de conteúdo */
 .contact-links {
@@ -197,7 +200,7 @@ a.tag:hover { color: var(--accent); border-color: var(--accent); }
 .pub-flex > div:last-child { flex: 1 1 15rem; min-width: 0; }
 .pub-thumb {
   flex: 0 0 auto;
-  width: 15rem;
+  width: 17rem;
   height: auto;
   border: 1px solid var(--border);
   border-radius: 6px;
