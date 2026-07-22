@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const levels = ['Middle school', 'High school', 'IB curriculum', 'Vestibular prep', 'Undergraduate', 'Graduate'];
+const oneOnOne = ['Quantum mechanics', 'Statistical mechanics', 'Dynamical systems', 'Relativity'];
+
+const assistantships = [
+  { years: '2024', code: '4302304', title: 'Electromagnetism II (4302304)', sub: 'Undergraduate course · Prof. Lucas Cornetta' },
+  { years: '2023', code: '4302111', title: 'Physics I (4302111)', sub: 'Undergraduate course · Prof. Raul Abramo' },
+  { years: '2022', code: '4302212', title: 'Physics IV (4302212)', sub: 'Undergraduate course · Prof. Márcio Varella' },
+  { years: '2022', code: '4300315', title: 'Introduction to Atomic Physics and Molecules (4300315)', sub: 'Undergraduate course · Prof. Sylvio Canuto' },
+  { years: '2021', code: '4300402', title: 'Introduction to Solid State Physics (4300402)', sub: 'Undergraduate course · Prof. Fernando Garcia' },
+];
+---
+<Base lang="en" title="Teaching" altUrl="/pt/ensino/">
+  <h1>Teaching</h1>
+
+  <div class="pub-layout">
+    <div class="pub-main">
+      <h2>Teaching assistantships (USP)</h2>
+      <div class="cv-list">
+        {assistantships.map((a) => (
+          <div class="cv-item">
+            <span class="cv-years">{a.years}</span>
+            <div>
+              <div class="cv-title"><a href={`https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=${a.code}`}>{a.title}</a></div>
+              <div class="cv-sub">{a.sub}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <aside class="pub-sidebar">
+      <div class="card">
+        <p class="profile-label">Private lessons</p>
+        <p class="card-text">
+          I give private lessons in physics, mathematics and chemistry. I have taught
+          students at every level, and on the advanced end I have prepared one-on-one
+          courses with lecture notes prepared for each student.
+        </p>
+        <p class="card-text">
+          <span class="contact-hint">Interested?</span> <a href="mailto:ely.miranda@usp.br">ely.miranda [at] usp.br</a>
+        </p>
+        <div class="cv-skill-row">
+          <span class="profile-label">Levels</span>
+          <div class="tag-row">
+            {levels.map((l) => <span class="tag">{l}</span>)}
+          </div>
+        </div>
+        <div class="cv-skill-row">
+          <span class="profile-label">One-on-one courses</span>
+          <div class="tag-row">
+            {oneOnOne.map((c) => <span class="tag">{c}</span>)}
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</Base>

@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+import { fetchPublications, isSelf } from '../../lib/orcid.mjs';
+import { fetchMetrics } from '../../lib/openalex.mjs';
+import { journalAbbrev, journalUrl } from '../../lib/journals.mjs';
+const pubs = await fetchPublications();
+const metrics = await fetchMetrics();
+const journals = [...new Set(pubs.map((p) => p.journal).filter(Boolean))]
+  .sort((a, b) => journalAbbrev(a).length - journalAbbrev(b).length);
+---
+<Base lang="en" title="Publications" altUrl="/pt/publicacoes/">
+  <h1>Publications</h1>
+  <p>
+    This list comes straight from my <a href="https://orcid.org/0000-0001-8237-1670">ORCID profile</a>.{metrics && <> Metrics from <a href="https://openalex.org/">OpenAlex</a>.</>}
+  </p>
+  <div class="pub-layout">
+    <ul class="pubs">
+      {pubs.map((pub) => (
+        <li class="card">
+          <strong>{pub.title}</strong><br />
+          {pub.authors.map((a, i) => (
+            <>
+              {isSelf(a) ? <u>{a}</u> : a}{i < pub.authors.length - 1 ? ', ' : ''}
+            </>
+          ))}
+          <div class="pub-meta">
+            {pub.journal}{pub.journal && pub.year ? ', ' : ''}{pub.year}
+            {pub.doi && <> · <a href={`https://doi.org/${pub.doi}`}>doi:{pub.doi}</a></>}
+          </div>
+        </li>
+      ))}
+    </ul>
+    <aside class="pub-sidebar">
+      {metrics && (
+        <div class="metrics-row">
+          {metrics.hIndex != null && (
+            <div class="card metric-card">
+              <span class="metric-num">{metrics.hIndex}</span>
+              <span class="metric-label">h-index</span>
+            </div>
+          )}
+          {metrics.citations != null && (
+            <div class="card metric-card">
+              <span class="metric-num">{metrics.citations}</span>
+              <span class="metric-label">citations</span>
+            </div>
+          )}
+          <div class="card metric-card">
+            <span class="metric-num">{pubs.length}</span>
+            <span class="metric-label">publications</span>
+          </div>
+        </div>
+      )}
+      {journals.length > 0 && (
+        <div class="card">
+          <p class="profile-label">Journals</p>
+          <ul class="profile-links">
+            {journals.map((j) => (
+              <li>{journalUrl(j) ? <a href={journalUrl(j)}>{journalAbbrev(j)}</a> : journalAbbrev(j)}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </aside>
+  </div>
+</Base>

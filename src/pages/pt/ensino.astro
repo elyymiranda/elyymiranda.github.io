@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const niveis = ['Fundamental II', 'Ensino médio', 'Currículo IB', 'Vestibular', 'Graduação', 'Pós-graduação'];
+const cursosIndividuais = ['Mecânica quântica', 'Mecânica estatística', 'Sistemas dinâmicos', 'Relatividade'];
+
+const monitorias = [
+  { years: '2024', code: '4302304', title: 'Eletromagnetismo II (4302304)', sub: 'Graduação · Prof. Lucas Cornetta' },
+  { years: '2023', code: '4302111', title: 'Física I (4302111)', sub: 'Graduação · Prof. Raul Abramo' },
+  { years: '2022', code: '4302212', title: 'Física IV (4302212)', sub: 'Graduação · Prof. Márcio Varella' },
+  { years: '2022', code: '4300315', title: 'Introdução à Física Atômica e Moléculas (4300315)', sub: 'Graduação · Prof. Sylvio Canuto' },
+  { years: '2021', code: '4300402', title: 'Introdução à Física do Estado Sólido (4300402)', sub: 'Graduação · Prof. Fernando Garcia' },
+];
+---
+<Base lang="pt" title="Ensino" altUrl="/en/teaching/">
+  <h1>Ensino</h1>
+
+  <div class="pub-layout">
+    <div class="pub-main">
+      <h2>Monitorias (USP)</h2>
+      <div class="cv-list">
+        {monitorias.map((m) => (
+          <div class="cv-item">
+            <span class="cv-years">{m.years}</span>
+            <div>
+              <div class="cv-title"><a href={`https://uspdigital.usp.br/jupiterweb/obterDisciplina?sgldis=${m.code}`}>{m.title}</a></div>
+              <div class="cv-sub">{m.sub}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <aside class="pub-sidebar">
+      <div class="card">
+        <p class="profile-label">Aulas particulares</p>
+        <p class="card-text">
+          Dou aulas particulares de física, matemática e química. Já tive alunos de todos
+          os níveis e, na ponta avançada, já montei cursos individuais com notas de aula
+          preparadas para cada aluno.
+        </p>
+        <p class="card-text">
+          <span class="contact-hint">Interessou?</span> <a href="mailto:ely.miranda@usp.br">ely.miranda [at] usp.br</a>
+        </p>
+        <div class="cv-skill-row">
+          <span class="profile-label">Níveis</span>
+          <div class="tag-row">
+            {niveis.map((n) => <span class="tag">{n}</span>)}
+          </div>
+        </div>
+        <div class="cv-skill-row">
+          <span class="profile-label">Cursos individuais</span>
+          <div class="tag-row">
+            {cursosIndividuais.map((c) => <span class="tag">{c}</span>)}
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</Base>

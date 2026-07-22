@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import foto from '../../assets/foto.jpg';
+const tags = [
+  'Espalhamento elétron-molécula',
+  'Captura eletrônica dissociativa',
+  'Dinâmica não-adiabática',
+  'Métodos multirreferência',
+];
+---
+<Base lang="pt" title="Início" altUrl="/en/">
+  <section class="hero">
+    <div>
+      <p class="hero-eyebrow">Física Atômica e Molecular</p>
+      <h1 class="hero-name">Ely G. F. de <span>Miranda</span></h1>
+      <p>
+        Doutor em Física pelo Instituto de Física da Universidade de São Paulo (IFUSP).
+        Tem experiência na área de Física Atômica e Molecular, com ênfase em Física
+        Computacional e Química Teórica. Atua principalmente no desenvolvimento e
+        aplicação de métodos teóricos para o estudo de espalhamento elétron-molécula, com
+        foco na investigação de estados aniônicos ressonantes e processos dissociativos
+        em sistemas orgânicos.
+      </p>
+      <p>
+        <span class="contact-hint">Contato:</span> <a href="mailto:ely.miranda@usp.br">ely.miranda [at] usp.br</a>
+      </p>
+    </div>
+    <aside class="profile-card">
+      <Image src={foto} alt="Ely G. F. de Miranda" width={300} densities={[1, 2]} class="profile-photo" />
+      <div class="card">
+        <p class="profile-label">Tópicos de pesquisa</p>
+        <div class="tag-row">
+          {tags.map((t) => <span class="tag">{t}</span>)}
+        </div>
+      </div>
+      <div class="card">
+        <p class="profile-label">Links</p>
+        <ul class="profile-links">
+          <li><a href="https://orcid.org/0000-0001-8237-1670">ORCID</a></li>
+          <li><a href="https://scholar.google.com/citations?user=pHenaVQAAAAJ">Google Scholar</a></li>
+          <li><a href="https://lattes.cnpq.br/2630393127994321">Lattes</a></li>
+          <li><a href="https://github.com/elyymiranda">GitHub</a></li>
+          <li><a href="https://br.linkedin.com/in/ely-miranda-969366216">LinkedIn</a></li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+</Base>

@@ -1,0 +1,55 @@
+---
+import '@fontsource-variable/fraunces';
+import '../styles/global.css';
+const { lang, title, altUrl } = Astro.props;
+const nav = {
+  en: [
+    ['Home', '/en/'],
+    ['Research', '/en/research/'],
+    ['Publications', '/en/publications/'],
+    ['CV', '/en/cv/'],
+    ['Teaching', '/en/teaching/'],
+    ['Blog', '/en/blog/'],
+  ],
+  pt: [
+    ['Início', '/pt/'],
+    ['Pesquisa', '/pt/pesquisa/'],
+    ['Publicações', '/pt/publicacoes/'],
+    ['CV', '/pt/cv/'],
+    ['Ensino', '/pt/ensino/'],
+    ['Blog', '/pt/blog/'],
+  ],
+}[lang];
+const affil = lang === 'pt' ? 'Física Atômica e Molecular' : 'Atomic and Molecular Physics';
+const path = Astro.url.pathname;
+const home = lang === 'pt' ? '/pt/' : '/en/';
+---
+<html lang={lang === 'pt' ? 'pt-BR' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title} · Ely G. F. de Miranda</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-id">
+        <a class="nav-name" href={home}>Ely G. F. de <span>Miranda</span></a>
+        <span class="nav-affil">{affil}</span>
+      </div>
+      <nav>
+        {nav.map(([label, href]) => (
+          <a href={href} aria-current={path === href ? 'page' : undefined}>{label}</a>
+        ))}
+        <a class="lang" href={altUrl} title={lang === 'pt' ? 'Switch to English' : 'Mudar para português'}>
+          {lang === 'pt' ? 'EN' : 'PT'}
+        </a>
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <p>© 2026 Ely Giancoli Ferreira de Miranda · ely.miranda [at] usp.br</p>
+    </footer>
+  </body>
+</html>

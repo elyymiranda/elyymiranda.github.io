@@ -1,0 +1,22 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone: 'UTC' });
+---
+<Base lang="en" title="Blog" altUrl="/pt/blog/">
+  <h1>Blog</h1>
+  <p>Science outreach and political writing. I write these in Portuguese.</p>
+  <ul class="pubs">
+    {posts.map((post) => (
+      <li class="card">
+        <a href={`/pt/blog/${post.id}/`}><strong>{post.data.title}</strong></a>
+        <span class="pub-meta"> (in Portuguese)</span>
+        <div class="post-date">
+          <span class="tag">{post.data.category}</span> · {fmt.format(post.data.date)}
+        </div>
+      </li>
+    ))}
+  </ul>
+</Base>

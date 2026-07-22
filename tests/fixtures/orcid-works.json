@@ -1,0 +1,54 @@
+{
+  "group": [
+    {
+      "work-summary": [
+        {
+          "put-code": 101,
+          "title": { "title": { "value": "The Newton-X Platform for Mixed Quantum–Classical Dynamics" } },
+          "journal-title": null,
+          "publication-date": { "year": { "value": "2026" } },
+          "external-ids": { "external-id": [
+            { "external-id-type": "doi", "external-id-value": "10.26434/chemrxiv.15002063/v3" }
+          ] }
+        }
+      ]
+    },
+    {
+      "work-summary": [
+        {
+          "put-code": 102,
+          "title": { "title": { "value": "The Newton-X platform for mixed quantum–classical dynamics" } },
+          "journal-title": { "value": "Physical Chemistry Chemical Physics" },
+          "publication-date": { "year": { "value": "2026" } },
+          "external-ids": { "external-id": [
+            { "external-id-type": "doi", "external-id-value": "10.1039/D6CP01391K" }
+          ] }
+        }
+      ]
+    },
+    {
+      "work-summary": [
+        {
+          "put-code": 103,
+          "title": { "title": { "value": "Low-Energy Electron Interactions with Resveratrol and Resorcinol: Anion States and Likely Dissociation Pathways" } },
+          "journal-title": { "value": "The Journal of Physical Chemistry A" },
+          "publication-date": { "year": { "value": "2022" } },
+          "external-ids": { "external-id": [
+            { "external-id-type": "doi", "external-id-value": "10.1021/acs.jpca.2c05789" }
+          ] }
+        }
+      ]
+    },
+    {
+      "work-summary": [
+        {
+          "put-code": 104,
+          "title": { "title": { "value": "Some conference abstract without metadata" } },
+          "journal-title": null,
+          "publication-date": null,
+          "external-ids": { "external-id": [] }
+        }
+      ]
+    }
+  ]
+}

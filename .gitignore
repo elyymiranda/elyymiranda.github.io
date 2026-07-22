@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+
+# Documentação de criação (specs, planos, scratch de agentes) fica só local
+docs/superpowers/
+.superpowers/

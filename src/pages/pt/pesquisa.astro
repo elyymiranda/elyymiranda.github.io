@@ -1,0 +1,109 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import figBreitWigner from '../../assets/research/fig-breit-wigner.png';
+import figPesAnion from '../../assets/research/fig-pes-anion.png';
+import figFulveneS1 from '../../assets/research/fig-fulvene-s1.png';
+
+const areas = [
+  {
+    title: 'Teoria de espalhamento quântico',
+    img: figBreitWigner,
+    caption: 'Perfil Breit-Wigner esquemático de uma ressonância, com posição Er e largura Γ. Figura 1.1 da minha tese de doutorado.',
+    description: `Elétrons de baixa energia estão presentes em diferentes sistemas na natureza e têm
+    um impacto grande na nossa vida. Esse impacto recai principalmente na sua capacidade
+    de quebrar uma molécula. O elétron pode ser capturado temporariamente, formando um íon
+    negativo transiente, também chamado de ressonância,
+    que pode comandar a dissociação num processo chamado captura eletrônica dissociativa
+    (DEA). Uso o Método Multicanal de Schwinger para caracterizar essas ressonâncias em
+    moléculas radiossensibilizadoras, como clorobenzenos, pirimidinas e compostos
+    fenólicos, extraindo seções de choque elásticas e as energias em que cada estado
+    aniônico se forma. Boa parte desse trabalho é feita com grupos experimentais que
+    medem transmissão eletrônica e espectros de massa, o que permite comparar teoria e
+    experimento diretamente.`,
+    questions: [
+      'Por que algumas moléculas se quebram depois de capturar um elétron lento, enquanto outras simplesmente o devolvem?',
+      'Como o dano de radiação a biomoléculas começa na escala molecular?',
+      'Cálculos conseguem apontar bons candidatos a radiossensibilizador antes dos experimentos?',
+    ],
+    papers: [
+      { label: 'ChemPhysChem (2026)', url: 'https://doi.org/10.1002/cphc.70406' },
+      { label: 'Phys. Scr. (2024)', url: 'https://doi.org/10.1088/1402-4896/ad8974' },
+      { label: 'JPCA (2022)', url: 'https://doi.org/10.1021/acs.jpca.2c05789' },
+    ],
+  },
+  {
+    title: 'Dinâmica não-adiabática',
+    img: figPesAnion,
+    caption: 'Curvas de energia potencial do ânion ao longo de uma coordenada dissociativa, de um estado σ* puramente repulsivo à coexistência de estados π* e σ*. Figura 1.2 da minha tese de doutorado.',
+    description: `Depois de capturar um elétron ou absorver luz, a molécula fica com excesso de
+    energia, e o que ela faz em seguida decide tudo: pode se fragmentar, se rearranjar ou
+    devolver a energia. Rodo simulações de surface hopping para acompanhar essa história
+    em tempo real, dos primeiros femtossegundos de um processo de DEA ou de uma
+    fotoexcitação até os produtos finais, mapeando as superfícies de energia potencial,
+    os acoplamentos não-adiabáticos e as interseções cônicas que a conduzem. Também
+    desenvolvo as interfaces Newton-X/OpenMolcas que tornam essas simulações possíveis.`,
+    questions: [
+      'O que uma molécula faz nos primeiros femtossegundos depois de capturar um elétron ou absorver luz?',
+      'Dá para simular a história inteira, da captura do elétron à fragmentação?',
+      'Quando os métodos mais baratos de simulação contam a história errada?',
+    ],
+    papers: [
+      { label: 'PCCP (2026)', url: 'https://doi.org/10.1039/D6CP01391K' },
+      { label: 'JCTC (2025)', url: 'https://doi.org/10.1021/acs.jctc.5c01529' },
+    ],
+  },
+  {
+    title: 'Química quântica multirreferência',
+    img: figFulveneS1,
+    caption: 'Evolução temporal da população S1 do fulveno em diferentes métodos de estrutura eletrônica. Adaptada de de Miranda et al., JCTC (2025); Figura 6.3 da tese.',
+    description: `Nada disso funciona se a estrutura eletrônica por baixo estiver errada. Ânions
+    transientes e estados excitados em geral não cabem numa única configuração
+    eletrônica: vários arranjos dos elétrons competem entre si, e forçar um só deles no
+    cálculo produz a física errada. Trabalho com métodos de espaço ativo (CASSCF/RASSCF)
+    e correlação dinâmica por cima deles (CASPT2, RASPT2, NEVPT2) para tratar
+    ressonâncias e outros problemas fortemente correlacionados, e é isso que torna
+    confiáveis o espalhamento e a dinâmica das seções acima.`,
+    questions: [
+      'Por que uma única configuração eletrônica não basta para descrever esses estados?',
+      'Quanta correlação eletrônica é preciso para descrever corretamente um ânion transiente?',
+      'Como manter esses cálculos viáveis sem perder a física?',
+    ],
+    papers: [
+      { label: 'JCTC (2025)', url: 'https://doi.org/10.1021/acs.jctc.5c01529' },
+    ],
+  },
+];
+---
+<Base lang="pt" title="Pesquisa" altUrl="/en/research/">
+  <h1>Pesquisa</h1>
+
+  {areas.map((area) => (
+    <section>
+      <h2>{area.title}</h2>
+      <div class="area-row">
+        <figure class="pillar-fig">
+          <Image src={area.img} alt={area.caption} width={520} />
+          <figcaption>{area.caption}</figcaption>
+        </figure>
+        <p>{area.description}</p>
+      </div>
+      <div class="pillar-grid">
+        <div class="card">
+          <p class="profile-label">Perguntas-chave</p>
+          <ul class="q-list">
+            {area.questions.map((q) => <li>{q}</li>)}
+          </ul>
+        </div>
+        <div class="card">
+          <p class="profile-label">Papers relacionados</p>
+          <ul class="profile-links">
+            {area.papers.map((p) => (
+              <li><a href={p.url}>{p.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  ))}
+</Base>

@@ -1,0 +1,187 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const education = [
+  {
+    years: '2021–2026',
+    title: 'PhD in Physics',
+    sub: 'University of São Paulo · Thesis: Models for Transient Anion Dynamics · Advisor: Prof. Márcio T. do N. Varella · FAPESP grant #2021/09837-7',
+  },
+  {
+    years: '2024',
+    title: 'Research exchange (6 months)',
+    sub: 'Aix-Marseille Université · with Prof. Mario Barbatti · FAPESP BEPE grant #2023/14792-8',
+  },
+  {
+    years: '2019–2020',
+    title: 'M.Sc. in Physics',
+    sub: 'University of São Paulo · CNPq fellowship',
+  },
+  {
+    years: '2015–2018',
+    title: 'B.Sc. in Physics',
+    sub: 'University of São Paulo',
+  },
+];
+
+const theses = [
+  {
+    years: '2026',
+    title: 'PhD thesis: Models for Transient Anion Dynamics',
+    href: 'https://teses.usp.br/teses/disponiveis/43/43134/tde-27042026-192023/',
+  },
+  {
+    years: '2021',
+    title: "Master's dissertation: Anionic states of resveratrol and its subunits",
+    href: 'https://teses.usp.br/teses/disponiveis/43/43134/tde-13042021-100400/',
+  },
+];
+
+const talks = [
+  {
+    years: '2025',
+    title: 'Surface Hopping for Dissociation in Electron-Molecule Collisions with Correlated Methods',
+    sub: 'Oral presentation · XXXIV International Conference on Photonic, Electronic and Atomic Collisions (ICPEAC) · Sapporo, Japan',
+  },
+  {
+    years: '2024',
+    title: 'Exploring Dissociative Electron Attachment Processes Induced by Vibrational Feshbach Resonance through Active Learning and Surface Hopping',
+    sub: 'Oral presentation · XVI Workshop on Molecular Physics and Spectroscopy (WFME) · Curitiba, Brazil',
+  },
+  {
+    years: '2024',
+    title: 'Exploring Dissociative Electron Attachment Processes Induced by Vibrational Feshbach Resonance through Active Learning and Surface Hopping',
+    sub: 'Poster · Congress of Theoretical Chemists of Latin Expression (CHITEL) · Namur, Belgium',
+  },
+  {
+    years: '2023',
+    title: 'Low-energy electron interactions with 2,4-dichloro-5-nitropyrimidine: anion states and likely dissociation pathways',
+    sub: 'Poster · XV Workshop on Molecular Physics and Spectroscopy (WFME) · São Paulo, Brazil',
+  },
+  {
+    years: '2019',
+    title: 'Anionic states of trans-Resveratrol',
+    sub: 'Brazilian Symposium on Theoretical Chemistry (SBQT)',
+  },
+  {
+    years: '2018',
+    title: 'Estados Eletrônicos da 5-Cloro-Uracila',
+    sub: 'Poster · Workshop on Molecular Physics and Spectroscopy (WFME)',
+  },
+  {
+    years: '2017',
+    title: 'Description of 5-Chlorine-Uracil in Water',
+    sub: 'Poster · 25th USP International Symposium on Undergraduate Research (SIICUSP) · Selected for the international stage',
+  },
+];
+
+const organization = [
+  {
+    years: '2023',
+    title: 'XV Workshop on Molecular Physics and Spectroscopy (WFME)',
+    sub: 'Member of the organizing committee · São Paulo',
+  },
+];
+
+const grants = [
+  { years: '2024', title: 'FAPESP BEPE research internship abroad', sub: 'Aix-Marseille Université, France' },
+  { years: '2021–2025', title: 'FAPESP PhD fellowship', sub: '' },
+  { years: '2019–2020', title: "CNPq Master's fellowship", sub: '' },
+];
+
+const skills = [
+  { label: 'Quantum chemistry', items: ['OpenMolcas', 'Gaussian', 'Newton-X', 'GAMESS'] },
+  { label: 'Methods', items: ['CASSCF/CASPT2', 'RASSCF/RASPT2', 'MRCI', '(MRSF-)TDDFT', 'surface hopping', 'Schwinger Multichannel Method'] },
+  { label: 'Programming', items: ['Python (NumPy, SciPy, Matplotlib)', 'Fortran 90/95 (MPI/OpenMP)', 'Bash', 'Git', 'LaTeX'] },
+  { label: 'Computing', items: ['Linux HPC clusters', 'MPI/OpenMP parallelization', 'workflow automation'] },
+];
+---
+<Base lang="en" title="CV" altUrl="/pt/cv/">
+  <h1>Curriculum Vitae</h1>
+  <p>
+    My full CV is on <a href="https://lattes.cnpq.br/2630393127994321">Lattes</a> and my
+    publication record on <a href="https://orcid.org/0000-0001-8237-1670">ORCID</a>.
+  </p>
+
+  <div class="pub-layout">
+    <div class="pub-main">
+      <h2>Education</h2>
+      <div class="cv-list">
+        {education.map((e) => (
+          <div class="cv-item">
+            <span class="cv-years">{e.years}</span>
+            <div>
+              <div class="cv-title">{e.title}</div>
+              <div class="cv-sub">{e.sub}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2>Theses</h2>
+      <div class="cv-list">
+        {theses.map((t) => (
+          <div class="cv-item">
+            <span class="cv-years">{t.years}</span>
+            <div>
+              <div class="cv-title">{t.title}</div>
+              <div class="cv-sub"><a href={t.href}>Available at the USP digital library</a></div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="pub-meta">Both the thesis and the dissertation are written in English.</p>
+
+      <h2>Talks and posters</h2>
+      <div class="cv-list">
+        {talks.map((t) => (
+          <div class="cv-item">
+            <span class="cv-years">{t.years}</span>
+            <div>
+              <div class="cv-title">{t.title}</div>
+              <div class="cv-sub">{t.sub}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2>Event organization</h2>
+      <div class="cv-list">
+        {organization.map((o) => (
+          <div class="cv-item">
+            <span class="cv-years">{o.years}</span>
+            <div>
+              <div class="cv-title">{o.title}</div>
+              <div class="cv-sub">{o.sub}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <aside class="pub-sidebar">
+      <div class="card">
+        <p class="profile-label">Grants & awards</p>
+        <ul class="side-list">
+          {grants.map((g) => (
+            <li>
+              <span class="cv-years">{g.years}</span><br />
+              {g.title}{g.sub ? ` · ${g.sub}` : ''}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="card">
+        <p class="profile-label">Technical skills</p>
+        {skills.map((s) => (
+          <div class="cv-skill-row">
+            <span class="profile-label">{s.label}</span>
+            <div class="tag-row">
+              {s.items.map((i) => <span class="tag">{i}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </aside>
+  </div>
+</Base>

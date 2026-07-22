@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import figBreitWigner from '../../assets/research/fig-breit-wigner.png';
+import figPesAnion from '../../assets/research/fig-pes-anion.png';
+import figFulveneS1 from '../../assets/research/fig-fulvene-s1.png';
+
+const areas = [
+  {
+    title: 'Quantum scattering theory',
+    img: figBreitWigner,
+    caption: 'Schematic Breit-Wigner profile of a resonance, with position Er and width Γ. Figure 1.1 of my PhD thesis.',
+    description: `Low-energy electrons are present in many different systems in nature and have a
+    large impact on our lives. That impact comes mostly from their ability to break a
+    molecule. The electron could get temporarily captured, forming a transient negative ion,
+    also called a resonance, which can drive
+    dissociation in a process called Dissociative Electron Attachment (DEA). I use the
+    Schwinger Multichannel Method to characterize these resonances in radiosensitizing
+    molecules, such as chlorobenzenes, pyrimidines and phenolic compounds, extracting
+    elastic cross sections and the energies at which each anion state forms. Much of this
+    work is done together with experimental groups that measure electron transmission and
+    mass spectra, so theory and experiment can be compared directly.`,
+    questions: [
+      'Why do some molecules break apart after capturing a slow electron, while others just let it go?',
+      'How does radiation damage to biomolecules begin at the molecular scale?',
+      'Can calculations point to good radiosensitizer candidates before the experiments?',
+    ],
+    papers: [
+      { label: 'ChemPhysChem (2026)', url: 'https://doi.org/10.1002/cphc.70406' },
+      { label: 'Phys. Scr. (2024)', url: 'https://doi.org/10.1088/1402-4896/ad8974' },
+      { label: 'JPCA (2022)', url: 'https://doi.org/10.1021/acs.jpca.2c05789' },
+    ],
+  },
+  {
+    title: 'Nonadiabatic dynamics',
+    img: figPesAnion,
+    caption: 'Anion potential energy curves along a dissociative coordinate, from a purely repulsive σ* state to coexisting π* and σ* states. Figure 1.2 of my PhD thesis.',
+    description: `After capturing an electron or absorbing light, a molecule is left with excess
+    energy, and what it does next decides everything: it can fall apart, rearrange, or
+    hand the energy back. I run surface hopping simulations to follow that story in real
+    time, from the first femtoseconds of a DEA event or a photoexcitation to the final
+    products, mapping the potential energy surfaces, nonadiabatic couplings and conical
+    intersections that steer it. I also develop the Newton-X/OpenMolcas interfaces that
+    make these simulations possible.`,
+    questions: [
+      'What does a molecule do in the first femtoseconds after capturing an electron or absorbing light?',
+      'Can we simulate the whole story, from electron capture to fragmentation?',
+      'When do cheaper simulation methods tell the wrong story?',
+    ],
+    papers: [
+      { label: 'PCCP (2026)', url: 'https://doi.org/10.1039/D6CP01391K' },
+      { label: 'JCTC (2025)', url: 'https://doi.org/10.1021/acs.jctc.5c01529' },
+    ],
+  },
+  {
+    title: 'Multireference quantum chemistry',
+    img: figFulveneS1,
+    caption: 'Time evolution of the S1 population of fulvene across electronic-structure methods. Adapted from de Miranda et al., JCTC (2025); Figure 6.3 of the thesis.',
+    description: `None of this works if the electronic structure underneath is wrong. Transient
+    anions and excited states usually cannot be described by a single electronic
+    configuration: several arrangements of the electrons compete, and forcing just one of
+    them into the calculation gives the wrong physics. I work with active space methods
+    (CASSCF/RASSCF) and dynamic correlation on top of them (CASPT2, RASPT2, NEVPT2) to
+    treat resonances and other strongly correlated problems, which is what makes the
+    scattering and dynamics above trustworthy.`,
+    questions: [
+      'Why is a single electronic configuration not enough to describe these states?',
+      'How much electron correlation does it take to get a transient anion right?',
+      'How do we keep these calculations affordable without losing the physics?',
+    ],
+    papers: [
+      { label: 'JCTC (2025)', url: 'https://doi.org/10.1021/acs.jctc.5c01529' },
+    ],
+  },
+];
+---
+<Base lang="en" title="Research" altUrl="/pt/pesquisa/">
+  <h1>Research</h1>
+
+  {areas.map((area) => (
+    <section>
+      <h2>{area.title}</h2>
+      <div class="area-row">
+        <figure class="pillar-fig">
+          <Image src={area.img} alt={area.caption} width={520} />
+          <figcaption>{area.caption}</figcaption>
+        </figure>
+        <p>{area.description}</p>
+      </div>
+      <div class="pillar-grid">
+        <div class="card">
+          <p class="profile-label">Key questions</p>
+          <ul class="q-list">
+            {area.questions.map((q) => <li>{q}</li>)}
+          </ul>
+        </div>
+        <div class="card">
+          <p class="profile-label">Related papers</p>
+          <ul class="profile-links">
+            {area.papers.map((p) => (
+              <li><a href={p.url}>{p.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  ))}
+</Base>
