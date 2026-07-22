@@ -5,3 +5,4 @@ dist/
 # Documentação de criação (specs, planos, scratch de agentes) fica só local
 docs/superpowers/
 .superpowers/
+CLAUDE.md
