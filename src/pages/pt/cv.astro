@@ -89,6 +89,12 @@ const bolsas = [
   { years: '2019–2020', title: 'Bolsa de mestrado CNPq', sub: '' },
 ];
 
+const linguas = [
+  { name: 'Português', level: 'Nativo' },
+  { name: 'Inglês', level: 'Fluente' },
+  { name: 'Francês', level: 'Básico' },
+];
+
 const competencias = [
   { label: 'Química quântica', items: ['OpenMolcas', 'Gaussian', 'Newton-X', 'GAMESS'] },
   { label: 'Métodos', items: ['CASSCF/CASPT2', 'RASSCF/RASPT2', 'MRCI', '(MRSF-)TDDFT', 'surface hopping', 'Método Multicanal de Schwinger'] },
@@ -157,17 +163,27 @@ const competencias = [
           </div>
         ))}
       </div>
+
+      <h2>Bolsas e prêmios</h2>
+      <div class="cv-list">
+        {bolsas.map((g) => (
+          <div class="cv-item">
+            <span class="cv-years">{g.years}</span>
+            <div>
+              <div class="cv-title">{g.title}</div>
+              {g.sub && <div class="cv-sub">{g.sub}</div>}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
 
     <aside class="pub-sidebar">
       <div class="card">
-        <p class="profile-label">Bolsas e prêmios</p>
+        <p class="profile-label">Línguas</p>
         <ul class="side-list">
-          {bolsas.map((g) => (
-            <li>
-              <span class="cv-years">{g.years}</span><br />
-              {g.title}{g.sub ? ` · ${g.sub}` : ''}
-            </li>
+          {linguas.map((l) => (
+            <li>{l.name} · <span class="cv-sub">{l.level}</span></li>
           ))}
         </ul>
       </div>

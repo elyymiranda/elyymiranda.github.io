@@ -89,6 +89,12 @@ const grants = [
   { years: '2019–2020', title: "CNPq Master's fellowship", sub: '' },
 ];
 
+const languages = [
+  { name: 'Portuguese', level: 'Native' },
+  { name: 'English', level: 'Fluent' },
+  { name: 'French', level: 'Basic' },
+];
+
 const skills = [
   { label: 'Quantum chemistry', items: ['OpenMolcas', 'Gaussian', 'Newton-X', 'GAMESS'] },
   { label: 'Methods', items: ['CASSCF/CASPT2', 'RASSCF/RASPT2', 'MRCI', '(MRSF-)TDDFT', 'surface hopping', 'Schwinger Multichannel Method'] },
@@ -157,17 +163,27 @@ const skills = [
           </div>
         ))}
       </div>
+
+      <h2>Grants & awards</h2>
+      <div class="cv-list">
+        {grants.map((g) => (
+          <div class="cv-item">
+            <span class="cv-years">{g.years}</span>
+            <div>
+              <div class="cv-title">{g.title}</div>
+              {g.sub && <div class="cv-sub">{g.sub}</div>}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
 
     <aside class="pub-sidebar">
       <div class="card">
-        <p class="profile-label">Grants & awards</p>
+        <p class="profile-label">Languages</p>
         <ul class="side-list">
-          {grants.map((g) => (
-            <li>
-              <span class="cv-years">{g.years}</span><br />
-              {g.title}{g.sub ? ` · ${g.sub}` : ''}
-            </li>
+          {languages.map((l) => (
+            <li>{l.name} · <span class="cv-sub">{l.level}</span></li>
           ))}
         </ul>
       </div>
