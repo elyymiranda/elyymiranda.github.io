@@ -15,3 +15,10 @@ test('pickMetrics tolera campos ausentes', () => {
   assert.deepEqual(pickMetrics({}), { hIndex: null, citations: null, works: null });
   assert.deepEqual(pickMetrics(null), { hIndex: null, citations: null, works: null });
 });
+
+test('mostCitedDoi devolve o DOI com mais citações', async () => {
+  const { mostCitedDoi } = await import('../src/lib/openalex.mjs');
+  assert.equal(mostCitedDoi({ 'a': 8, 'b': 5, 'c': 0 }), 'a');
+  assert.equal(mostCitedDoi({}), null);
+  assert.equal(mostCitedDoi({ 'a': 0 }), null);
+});

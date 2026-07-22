@@ -2,10 +2,21 @@
 import Base from '../../layouts/Base.astro';
 import { Image } from 'astro:assets';
 import { fetchPublications, isSelf } from '../../lib/orcid.mjs';
-import { fetchMetrics } from '../../lib/openalex.mjs';
+import { fetchMetrics, fetchCitations, mostCitedDoi } from '../../lib/openalex.mjs';
+import honors from '../../data/honors.json';
 import { journalAbbrev, journalUrl } from '../../lib/journals.mjs';
 const pubs = await fetchPublications();
 const metrics = await fetchMetrics();
+const cites = await fetchCitations(pubs.map((p) => p.doi));
+const topDoi = mostCitedDoi(cites);
+const mostCitedLabel = 'Mais citado';
+function badgesFor(doi) {
+  if (!doi) return [];
+  const out = [];
+  if (topDoi && doi.toLowerCase() === topDoi) out.push(mostCitedLabel);
+  for (const h of honors[doi] ?? []) out.push(h['pt'] ?? h.en ?? h);
+  return out;
+}
 const journals = [...new Set(pubs.map((p) => p.journal).filter(Boolean))]
   .sort((a, b) => journalAbbrev(a).length - journalAbbrev(b).length);
 // Miniaturas (graphical abstract) por DOI: arquivo em src/assets/pubs/ com o DOI
@@ -32,6 +43,7 @@ function thumbFor(doi) {
               <Image src={thumbFor(pub.doi)} alt={pub.title} width={540} class="pub-thumb" />
             )}
             <div>
+              {badgesFor(pub.doi).map((b) => <span class="badge">{b}</span>)}
               <strong>{pub.title}</strong><br />
               {pub.authors.map((a, i) => (
                 <>

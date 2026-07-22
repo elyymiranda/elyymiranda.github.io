@@ -207,6 +207,18 @@ article { max-width: 46rem; }
   background: #ffffff;
   padding: 0.25rem;
 }
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.05rem 0.45rem;
+  margin: 0 0.4rem 0.3rem 0;
+}
 ul.pubs { padding-left: 0; list-style: none; }
 ul.pubs li { margin-bottom: 1.4rem; }
 .pub-meta { color: var(--muted); font-size: 0.95rem; }
