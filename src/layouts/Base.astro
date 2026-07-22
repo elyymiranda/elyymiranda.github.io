@@ -51,5 +51,14 @@ const home = lang === 'pt' ? '/pt/' : '/en/';
     <footer>
       <p>© 2026 Ely Giancoli Ferreira de Miranda · ely.miranda [at] usp.br</p>
     </footer>
+    <script is:inline>
+      // Links externos abrem em nova aba; internos continuam na mesma.
+      for (const a of document.querySelectorAll('a[href^="http"]')) {
+        if (a.hostname !== location.hostname) {
+          a.target = '_blank';
+          a.rel = 'noopener';
+        }
+      }
+    </script>
   </body>
 </html>

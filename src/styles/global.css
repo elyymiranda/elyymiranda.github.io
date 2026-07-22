@@ -197,7 +197,7 @@ a.tag:hover { color: var(--accent); border-color: var(--accent); }
 .pub-flex > div:last-child { flex: 1 1 15rem; min-width: 0; }
 .pub-thumb {
   flex: 0 0 auto;
-  width: 8.5rem;
+  width: 12rem;
   height: auto;
   border: 1px solid var(--border);
   border-radius: 6px;
