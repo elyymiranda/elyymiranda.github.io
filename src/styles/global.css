@@ -193,6 +193,17 @@ a.tag:hover { color: var(--accent); border-color: var(--accent); }
   margin-left: 0.55rem;
   color: var(--muted);
 }
+.pub-flex { display: flex; gap: 1.1rem; align-items: center; flex-wrap: wrap; }
+.pub-flex > div:last-child { flex: 1 1 15rem; min-width: 0; }
+.pub-thumb {
+  flex: 0 0 auto;
+  width: 8.5rem;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 0.25rem;
+}
 ul.pubs { padding-left: 0; list-style: none; }
 ul.pubs li { margin-bottom: 1.4rem; }
 .pub-meta { color: var(--muted); font-size: 0.95rem; }
