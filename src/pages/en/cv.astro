@@ -1,6 +1,14 @@
 ---
 import Base from '../../layouts/Base.astro';
 
+const positions = [
+  {
+    years: '2026–present',
+    title: 'Postdoctoral researcher',
+    sub: 'University of Campinas (Unicamp), Institute of Physics "Gleb Wataghin" · Arnaldo Naves de Brito\'s group · FAPESP grant #2026/07066-7',
+  },
+];
+
 const education = [
   {
     years: '2021–2026',
@@ -108,9 +116,23 @@ const skills = [
     My full CV is on <a href="https://lattes.cnpq.br/2630393127994321">Lattes</a> and my
     publication record on <a href="https://orcid.org/0000-0001-8237-1670">ORCID</a>.
   </p>
+  <p><a href="/cv-ely-miranda.pdf" target="_blank" rel="noopener">Download full CV (PDF) ↓</a></p>
 
   <div class="pub-layout">
     <div class="pub-main">
+      <h2>Academic positions</h2>
+      <div class="cv-list">
+        {positions.map((p) => (
+          <div class="cv-item">
+            <span class="cv-years">{p.years}</span>
+            <div>
+              <div class="cv-title">{p.title}</div>
+              <div class="cv-sub">{p.sub}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
       <h2>Education</h2>
       <div class="cv-list">
         {education.map((e) => (

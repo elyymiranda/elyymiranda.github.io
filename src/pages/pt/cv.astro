@@ -1,6 +1,14 @@
 ---
 import Base from '../../layouts/Base.astro';
 
+const posicoes = [
+  {
+    years: '2026–atual',
+    title: 'Pesquisador de pós-doutorado',
+    sub: 'Universidade Estadual de Campinas (Unicamp), Instituto de Física "Gleb Wataghin" · Grupo do Arnaldo Naves de Brito · Bolsa FAPESP nº 2026/07066-7',
+  },
+];
+
 const formacao = [
   {
     years: '2021–2026',
@@ -108,9 +116,23 @@ const competencias = [
     Meu currículo completo está no <a href="https://lattes.cnpq.br/2630393127994321">Lattes</a> e meu
     histórico de publicações no <a href="https://orcid.org/0000-0001-8237-1670">ORCID</a>.
   </p>
+  <p><a href="/cv-ely-miranda.pdf" target="_blank" rel="noopener">Baixar o CV completo (PDF) ↓</a></p>
 
   <div class="pub-layout">
     <div class="pub-main">
+      <h2>Posições acadêmicas</h2>
+      <div class="cv-list">
+        {posicoes.map((p) => (
+          <div class="cv-item">
+            <span class="cv-years">{p.years}</span>
+            <div>
+              <div class="cv-title">{p.title}</div>
+              <div class="cv-sub">{p.sub}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
       <h2>Formação</h2>
       <div class="cv-list">
         {formacao.map((e) => (
