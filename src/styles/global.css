@@ -92,10 +92,11 @@ footer {
 }
 .hero-name { font-size: clamp(2.4rem, 6vw, 3.4rem); margin: 0 0 1rem; }
 .hero-name span { color: var(--accent); }
-.profile-card { flex: 0 1 17rem; display: flex; flex-direction: column; gap: 0.9rem; }
+.profile-card { flex: 0 1 24rem; display: flex; flex-direction: column; gap: 0.9rem; }
 .profile-photo { border-radius: 10px; display: block; }
-/* Foto e posição atual num bloco contínuo: a moldura é do contêiner e a foto
-   entra colada, sem borda nem cantos próprios (overflow recorta a imagem). */
+/* Foto, posição atual e tópicos num bloco contínuo: a moldura é do contêiner,
+   a foto entra colada (overflow recorta os cantos) e cada seção seguinte é
+   separada por uma linha, em vez de virarem cartões soltos com vão entre eles. */
 .profile-block {
   background: var(--card);
   border: 1px solid var(--border);
@@ -103,8 +104,9 @@ footer {
   overflow: hidden;
 }
 .profile-block .profile-photo { border-radius: 0; width: 100%; height: auto; }
-.profile-position { padding: 0.95rem 1.15rem 1.05rem; border-top: 1px solid var(--border); }
-.profile-position p + p { margin-top: 0.35rem; }
+.profile-block > * + * { border-top: 1px solid var(--border); }
+.profile-section { padding: 0.95rem 1.15rem 1.05rem; }
+.profile-section p + p { margin-top: 0.35rem; }
 .profile-label {
   font-size: 0.72rem;
   letter-spacing: 0.12em;

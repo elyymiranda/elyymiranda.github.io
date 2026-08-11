@@ -28,17 +28,17 @@ const tags = [
     </div>
     <aside class="profile-card">
       <div class="profile-block">
-        <Image src={foto} alt="Ely G. F. de Miranda" width={300} densities={[1, 2]} class="profile-photo" />
-        <div class="profile-position">
+        <Image src={foto} alt="Ely G. F. de Miranda" width={480} densities={[1, 2]} class="profile-photo" />
+        <div class="profile-section">
           <p class="profile-label">Current position</p>
           <p>Postdoctoral researcher · University of Campinas (Unicamp)</p>
           <p>Arnaldo Naves de Brito's group</p>
         </div>
-      </div>
-      <div class="card">
-        <p class="profile-label">Research topics</p>
-        <div class="tag-row">
-          {tags.map((t) => <span class="tag">{t}</span>)}
+        <div class="profile-section">
+          <p class="profile-label">Research topics</p>
+          <div class="tag-row">
+            {tags.map((t) => <span class="tag">{t}</span>)}
+          </div>
         </div>
       </div>
       <div class="card">
