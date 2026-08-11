@@ -94,6 +94,17 @@ footer {
 .hero-name span { color: var(--accent); }
 .profile-card { flex: 0 1 17rem; display: flex; flex-direction: column; gap: 0.9rem; }
 .profile-photo { border-radius: 10px; display: block; }
+/* Foto e posição atual num bloco contínuo: a moldura é do contêiner e a foto
+   entra colada, sem borda nem cantos próprios (overflow recorta a imagem). */
+.profile-block {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.profile-block .profile-photo { border-radius: 0; width: 100%; height: auto; }
+.profile-position { padding: 0.95rem 1.15rem 1.05rem; border-top: 1px solid var(--border); }
+.profile-position p + p { margin-top: 0.35rem; }
 .profile-label {
   font-size: 0.72rem;
   letter-spacing: 0.12em;

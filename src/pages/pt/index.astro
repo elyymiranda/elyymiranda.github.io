@@ -27,11 +27,13 @@ const tags = [
       </p>
     </div>
     <aside class="profile-card">
-      <Image src={foto} alt="Ely G. F. de Miranda" width={300} densities={[1, 2]} class="profile-photo" />
-      <div class="card">
-        <p class="profile-label">Posição atual</p>
-        <p class="card-text">Pesquisador de pós-doutorado · Universidade Estadual de Campinas (Unicamp)</p>
-        <p class="card-text">Grupo do Arnaldo Naves de Brito · Bolsa FAPESP nº 2026/07066-7</p>
+      <div class="profile-block">
+        <Image src={foto} alt="Ely G. F. de Miranda" width={300} densities={[1, 2]} class="profile-photo" />
+        <div class="profile-position">
+          <p class="profile-label">Posição atual</p>
+          <p>Pesquisador de pós-doutorado · Universidade Estadual de Campinas (Unicamp)</p>
+          <p>Grupo do Arnaldo Naves de Brito</p>
+        </div>
       </div>
       <div class="card">
         <p class="profile-label">Tópicos de pesquisa</p>
