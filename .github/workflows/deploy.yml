@@ -13,12 +13,23 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  # Reativa o próprio workflow a cada cron: o GitHub desliga agendamentos após
+  # 60 dias sem commit, e a chamada de "enable" zera esse contador.
+  actions: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
+  keepalive:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/deploy.yml/enable"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
   build:
     runs-on: ubuntu-latest
     steps:
