@@ -19,7 +19,7 @@ export async function fetchMetrics(orcid = ORCID_ID) {
   cached = null;
   try {
     const res = await fetch(`https://api.openalex.org/authors/orcid:${orcid}`, {
-      headers: { 'User-Agent': 'elyymiranda.github.io (mailto:ely.miranda@usp.br)' },
+      headers: { 'User-Agent': 'elyymiranda.github.io (mailto:elygfm@unicamp.br)' },
       signal: AbortSignal.timeout(8000),
     });
     if (res.ok) {
@@ -58,7 +58,7 @@ export async function fetchCitations(dois) {
     const res = await fetch(
       `https://api.openalex.org/works?filter=doi:${filter}&per-page=50&select=doi,cited_by_count`,
       {
-        headers: { 'User-Agent': 'elyymiranda.github.io (mailto:ely.miranda@usp.br)' },
+        headers: { 'User-Agent': 'elyymiranda.github.io (mailto:elygfm@unicamp.br)' },
         signal: AbortSignal.timeout(8000),
       },
     );
